@@ -27,9 +27,9 @@ jobs:
         mv xiaomi-10-ultra-kernel source
         mv White-Wolf-UMI-UNI source2
         
-        sudo cp /source/libdebuginfod.so.1 /source2/usr/lib
+        sudo cp source/libdebuginfod.so.1 source2/usr/lib
         
-        sudo chmod 777 /source2/usr/lib/libdebuginfod.so.1
+        sudo chmod 777 source2/usr/lib/libdebuginfod.so.1
         
         cd source2
       
