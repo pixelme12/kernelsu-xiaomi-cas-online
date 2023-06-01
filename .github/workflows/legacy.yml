@@ -25,7 +25,7 @@ jobs:
 
         git clone https://github.com/pixelme12/White-Wolf-UMI-UNI
         
-        mv White-Wolf-UMI-UNIl source
+        mv White-Wolf-UMI-UNI source
   
         cd source
         
