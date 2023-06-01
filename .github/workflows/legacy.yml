@@ -1,4 +1,4 @@
-name: (GCC)Kernel Builder Xiaomi MI 10
+name: (GCC)Kernel Xiaomi MI 10
 
 on: 
   push:
@@ -19,19 +19,19 @@ jobs:
         
         
 
-        sudo apt update && sudo apt upgrade
-        sudo apt install -y git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip bc      
+        sudo apt update
+        #sudo apt install -y git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip bc      
+        sudo apt-get install git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python2 python3
 
-        git clone https://github.com/CoolestEnoch/xiaomi-10-ultra-kernel
-        git clone https://github.com/yarpiin/White-Wolf-UMI-UNI
-        mv xiaomi-10-ultra-kernel source
-        mv White-Wolf-UMI-UNI source2
+        git clone https://github.com/pixelme12/White-Wolf-UMI-UNI
         
-        sudo cp source/libdebuginfod.so.1 source2/usr/lib
+        mv White-Wolf-UMI-UNIl source
+  
+        cd source
         
-        sudo chmod 777 source2/usr/lib/libdebuginfod.so.1
+        sudo cp ./libdebuginfod.so.1 /usr/lib
         
-        cd source2
+        sudo chmod 777 /usr/lib/libdebuginfod.so.1
       
         echo "[+] Append kernel params to kprobes"
         echo "CONFIG_KPROBES=y" >> arch/arm64/configs/vendor/umi_defconfig
@@ -64,7 +64,7 @@ jobs:
         export CROSS_COMPILE=$(pwd)/gcc/gcc-arm64-gcc-master/bin/aarch64-elf-
         export CROSS_COMPILE_ARM32=$(pwd)/gcc/gcc-arm-gcc-master/bin/arm-eabi-
         
-        cd source2
+        cd source
         make umi_defconfig
         make -j$(nproc --all)
         
