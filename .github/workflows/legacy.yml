@@ -65,7 +65,7 @@ jobs:
         export CROSS_COMPILE_ARM32=$(pwd)/gcc/gcc-arm-gcc-master/bin/arm-eabi-
         
         cd source
-        make umi_defconfig
+        make yarpiin_umi_defconfig
         make -j$(nproc --all)
         
 
